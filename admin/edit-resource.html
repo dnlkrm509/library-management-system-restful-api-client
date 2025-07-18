@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Resource</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Resources</a></li>
+      <li><a href="/admin/resources">Admin Resources</a></li>
+    </ul>
+  </nav>
+  <main>
+    <form class="resource-form" action="/admin/edit-resource/RESOURCE_ID" method="POST">
+      <div>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="Existing Title" required />
+      </div>
+      <div>
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" value="Author Name" required />
+      </div>
+      <div>
+        <label for="publicationYear">Year</label>
+        <input type="number" name="publicationYear" id="publicationYear" value="2023" required />
+      </div>
+      <div>
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre" value="Genre" required />
+      </div>
+      <div>
+        <input type="hidden" name="resourceId" value="RESOURCE_ID" />
+        <button type="submit" class="btn">Update Resource</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
