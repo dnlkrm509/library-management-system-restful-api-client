@@ -115,7 +115,7 @@ async function fetchResources() {
         <p><strong>Genre:</strong> ${resource.genre}</p>
         <div class="buttons">
           <a class="btn" href="edit-resource.html?id=${resource._id}">Edit</a>
-          <button class="btn" type="button">Delete</button>
+          <button class="btn" type="button" onclick="deleteResource('${resource._id}')">Delete</button>
         </div>
       `;
 
@@ -181,22 +181,21 @@ async function updateResource() {
   }
 }
 
-const deleteResource = (btn) => {
-    const resourceId = btn.parentNode.querySelector('[name=resourceId]').value;
-    const csrfToken = btn.parentNode.querySelector('[name=_csrf]').value;
-    
-    const resourceElement = btn.closest('.item');
-    
-    fetch('/admin/resource/' + resourceId, {
+const deleteResource = async (resourceId) => {
+    const response = await fetch('http://localhost:8080/admin/resource/' + resourceId, {
         method: 'DELETE',
         headers: {
-            'csrf-token': csrfToken
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
     })
-    .then(result => result.json())
-    .then(data => {
-        console.log(data);
-        resourceElement.parentNode.removeChild(resourceElement);
-    })
-    .catch(err => console.log(err));
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.log(`Error: ${errorData.message || 'Something went wrong.'}`);
+      return;
+    }
+
+    const data = await response.json();
+    console.log(data);
+    window.location.href = './resources.html'
 };
