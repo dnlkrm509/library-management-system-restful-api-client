@@ -119,7 +119,8 @@ h5 {
 .login-form,
 .resource-form,
 .new-password-form,
-.reset-form {
+.reset-form,
+.edit-form {
     padding: 1rem;
     width: 30rem;
     margin: auto;
