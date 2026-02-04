@@ -4,7 +4,8 @@
       <li><RouterLink to="/resources">Resources</RouterLink></li>
       <li v-if="isAuth"><RouterLink to="/borrow">Borrowed</RouterLink></li>
       <li v-if="isAuth"><RouterLink to="/borrow-history">Borrow History</RouterLink></li>
-      <li v-if="isAuth"><RouterLink to="/admin/resources">Admin</RouterLink></li>
+      <li v-if="isAuth"><RouterLink to="/admin/edit">Add Resource</RouterLink></li>
+      <li v-if="isAuth"><RouterLink to="/admin/resources">Admin Resources</RouterLink></li>
     </ul>
 
     <ul class="list">
